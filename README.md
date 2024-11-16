@@ -8,7 +8,7 @@ Starfall Horizon is a game engine developed from scratch using **C++**, **CMake*
 
 - **Custom Game Engine Framework**: Built from scratch with a focus on performance and simplicity.
 - **Graphics Rendering**: Powered by the SFML library for 2D graphics.
-- **Cross-Platform Support**: Designed to work on Windows, Linux, and macOS (with compatible dependencies) with the help of CMake**.
+- **Cross-Platform Support**: Designed to work on Windows, Linux, and macOS (with compatible dependencies) with the help of CMake.
 
 ---
 

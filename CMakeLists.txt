@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.0)
+cmake_minimum_required(VERSION 3.29.0)
 
 project(StarfallHorizon
 	VERSION 1.0.0

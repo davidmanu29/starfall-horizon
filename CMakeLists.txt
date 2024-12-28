@@ -22,6 +22,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(${SFML_LIB_NAME})
 
 # game var
+set(STARFALL_HORIZON_ENGINE_TARGET_NAME StarfallHorizonEngine)
 set(STARFALL_HORIZON_GAME_TARGET_NAME StarfallHorizonGame)
 
-add_subdirectory(StarfallHorizon)
+add_subdirectory(StarfallHorizonEngine)
+add_subdirectory(StarfallHorizonGame)

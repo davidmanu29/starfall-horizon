@@ -32,8 +32,8 @@ namespace sh
 			while (accumulatedTime > targetDeltaTime)
 			{
 				accumulatedTime -= targetDeltaTime;
-				Tick(targetDeltaTime);
-				Render();
+				TickInternal(targetDeltaTime);
+				RenderInternal();
 			}
 		}
 	}
@@ -43,8 +43,26 @@ namespace sh
 		std::cout << "ticking at framerate: " << 1.f / deltaTime << std::endl;
 	}
 
-	void Application::Render()
+	void Application::TickInternal(float deltaTime)
 	{
+		Tick(deltaTime);
+	}
 
+	void Application::RenderInternal()
+	{
+		mWindow.clear();
+
+		Render();
+		
+		mWindow.display();
+	}
+
+	void Application::Render()
+	{	
+		sf::RectangleShape rect{ sf::Vector2f{100, 100} };
+		rect.setFillColor(sf::Color::Green);
+		rect.setOrigin(50, 50);
+		rect.setPosition(mWindow.getSize().x / 2, mWindow.getSize().y / 2);
+		mWindow.draw(rect);
 	}
 }

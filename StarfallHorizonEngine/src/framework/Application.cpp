@@ -1,5 +1,5 @@
 #include "framework/Application.h"
-#include <iostream>
+#include <framework/Core.h>
 
 namespace sh
 {
@@ -27,20 +27,24 @@ namespace sh
 					mWindow.close();
 				}
 			}
+			
+			float frameDeltaTime = mTickClock.restart().asSeconds();
+			accumulatedTime += frameDeltaTime;
 
-			accumulatedTime += mTickClock.restart().asSeconds();
 			while (accumulatedTime > targetDeltaTime)
 			{
 				accumulatedTime -= targetDeltaTime;
 				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
+
+			LOG("ticking at framerate: %f", 1.f / frameDeltaTime);
 		}
 	}
 
 	void Application::Tick(float deltaTime)
 	{
-		std::cout << "ticking at framerate: " << 1.f / deltaTime << std::endl;
+		LOG("ticking at framerate: %f\n", 1.f / deltaTime);
 	}
 
 	void Application::TickInternal(float deltaTime)

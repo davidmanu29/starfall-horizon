@@ -19,18 +19,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         
-      - name: Set up toolchain (Windows only)
-        if: matrix.os == 'windows-latest'
-        run: |
-          choco install ninja --no-progress --yes
-          
       - name: Configure
-        run: |
-          cmake -B build -S . \
-            -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
-            -G Ninja
-
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build-type }}
 
       - name: Build
-        run: |
-          cmake --build build --config ${{ matrix.build-type }}
+        run: cmake --build build --config ${{ matrix.build-type }}

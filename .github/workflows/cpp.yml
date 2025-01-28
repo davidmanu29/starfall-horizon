@@ -1,0 +1,36 @@
+name: CMake C++ Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        build-type: [Debug, Release]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        
+      - name: Set up toolchain (Windows only)
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install ninja --no-progress --yes
+          
+      - name: Configure
+        run: |
+          cmake -B build -S . \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
+            -G Ninja
+        if: matrix.os == 'windows-latest'
+
+      - name: Build
+        run: |
+          cmake --build build --config ${{ matrix.build-type }}

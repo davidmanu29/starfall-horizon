@@ -7,20 +7,19 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
+  build-windows:
+    runs-on: windows-latest
+    
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
         build-type: [Debug, Release]
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
         
-      - name: Configure
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build-type }}
+      - name: Configure with CMake
+        run: cmake -S . -B build -A x64 -DCMAKE_BUILD_TYPE=${{ matrix.build-type }}
 
       - name: Build
         run: cmake --build build --config ${{ matrix.build-type }}

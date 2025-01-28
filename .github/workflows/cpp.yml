@@ -29,7 +29,7 @@ jobs:
           cmake -B build -S . \
             -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} \
             -G Ninja
-        if: matrix.os == 'windows-latest'
+
 
       - name: Build
         run: |

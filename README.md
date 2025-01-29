@@ -1,5 +1,5 @@
 # Starfall Horizon
-[![Windows Build](https://github.com/davidmanu29/starfall-horizon/actions/workflows/cpp.yml/badge.svg?branch=main)](https://github.com/davidmanu29/starfall-horizon/actions/workflows/cpp.yml)
+[![Windows Build](https://github.com/davidmanu29/starfall-horizon/actions/workflows/cpp.yml/badge.svg)](https://github.com/davidmanu29/starfall-horizon/actions/workflows/cpp.yml)
 
 Starfall Horizon is a game engine developed from scratch using **C++**, **CMake**, and the **SFML** library for graphics. The project aims to provide a lightweight, flexible, and modular foundation for game development.
 
@@ -24,7 +24,6 @@ Make sure you have the following tools installed:
 - **C++ Compiler**:
   - GCC/Clang (Linux)
   - MSVC (Windows)
-  - Xcode (macOS)
 - **CMake** (version 3.15 or later)
 - **SFML Library** (version 2.5 or later)
 

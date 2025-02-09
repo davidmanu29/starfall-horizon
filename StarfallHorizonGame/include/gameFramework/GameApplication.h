@@ -6,6 +6,7 @@ namespace sh
 {
 	class GameApplication : public Application
 	{
-
+	public:
+		GameApplication();
 	};
 }

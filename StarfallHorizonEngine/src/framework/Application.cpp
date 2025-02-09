@@ -1,12 +1,14 @@
 #include "framework/Application.h"
-#include <framework/Core.h>
+#include "framework/Core.h"
+#include "framework/World.h"
 
 namespace sh
 {
 	Application::Application()
 		: mWindow{ sf::VideoMode(900,800), "Starfall Horizon" },
 		mTargetFramerate(60.f),
-		mTickClock{}
+		mTickClock{},
+		currentWorld{nullptr}
 	{
 		
 	}	
@@ -37,19 +39,22 @@ namespace sh
 				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
-
-			LOG("ticking at framerate: %f", 1.f / frameDeltaTime);
 		}
 	}
 
 	void Application::Tick(float deltaTime)
 	{
-		LOG("ticking at framerate: %f\n", 1.f / deltaTime);
+
 	}
 
 	void Application::TickInternal(float deltaTime)
 	{
 		Tick(deltaTime);
+
+		if (currentWorld)
+		{
+			currentWorld->TickInternal(deltaTime);
+		}
 	}
 
 	void Application::RenderInternal()

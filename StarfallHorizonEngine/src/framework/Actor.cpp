@@ -12,7 +12,7 @@ namespace sh
 
 	Actor::~Actor()
 	{
-
+		LOG("Actor destroyed");
 	}
 
 	void Actor::BeginPlayInternal()

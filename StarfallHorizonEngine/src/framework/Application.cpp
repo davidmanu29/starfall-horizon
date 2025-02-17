@@ -68,10 +68,9 @@ namespace sh
 
 	void Application::Render()
 	{	
-		sf::RectangleShape rect{ sf::Vector2f{100, 100} };
-		rect.setFillColor(sf::Color::Green);
-		rect.setOrigin(50, 50);
-		rect.setPosition(mWindow.getSize().x / 2, mWindow.getSize().y / 2);
-		mWindow.draw(rect);
+		if (currentWorld)
+		{
+			currentWorld->Render(mWindow);
+		}
 	}
 }

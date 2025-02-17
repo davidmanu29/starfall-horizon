@@ -50,12 +50,20 @@ namespace sh
 			}
 			else
 			{
-				iter->get()->Tick(deltaTime);
+				iter->get()->TickInternal(deltaTime);
 				++iter;
 			}
 		}
 		
 		Tick(deltaTime);
+	}
+
+	void World::Render(sf::RenderWindow& window)
+	{
+		for (auto& actor : mActors)
+		{
+			actor->Render(window);
+		}
 	}
 
 	void World::BeginPlay()

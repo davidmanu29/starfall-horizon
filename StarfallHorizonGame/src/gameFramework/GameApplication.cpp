@@ -10,6 +10,7 @@ sh::Application* GetApplication()
 namespace sh
 {
 	GameApplication::GameApplication()
+		: Application{ 600, 980, "Starfall Horizon", sf::Style::Titlebar | sf::Style::Close }
 	{
 		weak<World> newWorld = LoadWorld<World>();
 		newWorld.lock()->SpawnActor<Actor>();

@@ -3,16 +3,16 @@
 #include "framework/World.h"
 
 namespace sh
-{
-	Application::Application()
-		: mWindow{ sf::VideoMode(900,800), "Starfall Horizon" },
+{	
+	Application::Application(unsigned int windowWidth, unsigned int windowHeight, const std::string& title, sf::Uint32 style)
+		: mWindow{ sf::VideoMode(windowWidth, windowHeight), title, style },
 		mTargetFramerate(60.f),
 		mTickClock{},
-		currentWorld{nullptr}
+		currentWorld{ nullptr }
 	{
-		
-	}	
-	
+
+	}
+
 	void Application::Run()
 	{
 		mTickClock.restart();

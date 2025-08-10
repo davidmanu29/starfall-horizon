@@ -1,6 +1,7 @@
 #include "framework/Application.h"
 #include "framework/Core.h"
 #include "framework/World.h"
+#include "framework/AssetManager.h"
 
 namespace sh
 {	
@@ -8,7 +9,9 @@ namespace sh
 		: mWindow{ sf::VideoMode(windowWidth, windowHeight), title, style },
 		mTargetFramerate(60.f),
 		mTickClock{},
-		currentWorld{ nullptr }
+		currentWorld{ nullptr },
+		mCleanCycleClock{},
+		mCleanCycleInterval{2.f}
 	{
 
 	}
@@ -54,6 +57,12 @@ namespace sh
 		if (currentWorld)
 		{
 			currentWorld->TickInternal(deltaTime);
+		}
+
+		if (mCleanCycleClock.getElapsedTime().asSeconds() >= mCleanCycleInterval)
+		{
+			mCleanCycleClock.restart();
+			AssetManager::Get().CleanCycle();
 		}
 	}
 

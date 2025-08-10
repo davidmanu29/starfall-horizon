@@ -9,6 +9,7 @@ namespace sh
 	public:
 		static AssetManager& Get();
 		shared<sf::Texture> LoadTexture(const std::string& path);
+		void CleanCycle();
 	protected:
 		AssetManager();
 	private:

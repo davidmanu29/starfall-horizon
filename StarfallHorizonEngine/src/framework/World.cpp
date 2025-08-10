@@ -29,7 +29,7 @@ namespace sh
 
 	void World::Tick(float deltaTime)
 	{
-		LOG("Tick at framerate: %f", 1.f/deltaTime);
+
 	}
 
 	void World::TickInternal(float deltaTime)
@@ -68,6 +68,6 @@ namespace sh
 
 	void World::BeginPlay()
 	{
-		LOG("began play");
+
 	}
 }

@@ -8,7 +8,6 @@ namespace sh
 	{
 		if (!assetManager)
 		{
-			//assetManager = std::move(unique<AssetManager>{new AssetManager});
 			assetManager = unique<AssetManager>{new AssetManager};
 		}
 
@@ -31,6 +30,22 @@ namespace sh
 		}
 
 		return shared<sf::Texture>{nullptr};
+	}
+
+	void AssetManager::CleanCycle()
+	{
+		for (auto iter = mLoadedTextureMap.begin(); iter != mLoadedTextureMap.end();)
+		{
+			if (iter->second.unique()) //only one left
+			{
+				LOG("Cleaning texture: %s", iter->first.c_str());
+				iter = mLoadedTextureMap.erase(iter);
+			}
+			else
+			{
+				++iter;
+			}
+		}
 	}
 
 	AssetManager::AssetManager()

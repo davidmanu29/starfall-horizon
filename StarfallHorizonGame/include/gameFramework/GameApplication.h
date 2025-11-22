@@ -2,10 +2,12 @@
 
 #include <framework/Application.h>
 #include <framework/Core.h>
+#include <spaceship/Spaceship.h>
 
 namespace sh
 {
 	class Actor;
+	class Spaceship;
 	class GameApplication : public Application
 	{
 	public:
@@ -13,6 +15,6 @@ namespace sh
 		virtual void Tick(float deltaTime) override;
 	private:
 		float counter;
-		weak<Actor> actorToDestroy;
+		weak<Spaceship> testPlayerSpaceship;
 	};
 }
